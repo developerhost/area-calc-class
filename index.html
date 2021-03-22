@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<!-- このhtmlファイルは結果表示用のコードです。変更する必要はありません。 -->
+<!-- 採点に使用するので変更しないでください。 -->
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>面積計算アプリ</title>
+    <link rel='stylesheet' href='./style.css'>
+  </head>
+  <body>
+    <div class="container">
+      <h3>Shapeクラスのインスタンス作成</h3>
+      <span>色：</span>
+      <input 
+        type="text" 
+        id="id_shapeColor"
+      >
+      <span>タイプ：</span>
+      <input 
+        type="text" 
+        id="id_shapeType"
+      >
+      <button 
+        onclick="createShape()" 
+        id="button1"
+      >
+      作成!
+      </button>
+      <p id="id_shapeProperty"></p>
+      <p id="id_shapeHello"></p>
+    </div>
+    <div class="container">
+      <h3>Circleクラスのインスタンス作成</h3>
+      <span>色：</span>
+      <input 
+        type="text" 
+        id="id_circleColor"
+      >
+      <span>半径：</span>
+      <input 
+        type="text" 
+        id="id_circleRadius"
+      >
+      <button 
+        onclick="createCircle()" 
+        id="button2"
+      >
+      作成!
+      </button>
+      <p id="id_circleProperty"></p>
+      <p id="id_circleArea"></p>
+      <p id="id_circleHello"></p>
+    </div>
+    <div class="container">
+      <h3>Rectangleクラスのインスタンス作成</h3>
+      <span>色：</span>
+      <input 
+        type="text" 
+        id="id_recColor"
+      >
+      <span>よこ：</span>
+      <input 
+        type="text" 
+        id="id_recWidth"
+      >
+      <span>たて：</span>
+      <input 
+        type="text" 
+        id="id_recHeight"
+      >
+      <button 
+        onclick="createRectangle()" 
+        id="button3"
+      >
+      作成!
+      </button>
+      <p id="id_recProperty"></p>
+      <p id="id_recArea"></p>
+    </div>
+    <div class="container">
+      <h3>Squareクラスのインスタンス作成</h3>
+      <span>色：</span>
+      <input 
+        type="text" 
+        id="id_squareColor"
+      >
+      <span>一辺の長さ：</span>
+      <input 
+        type="text" 
+        id="id_squareLength"
+      >
+      <button 
+        onclick="createSquare()" 
+        id="button4"
+      >
+      作成!
+      </button>
+      <p id="id_squareProperty"></p>
+      <p id="id_squareArea"></p>
+      <p id="id_squareDiagonal"></p>
+    </div>
+
+    <script src="main.js"></script>
+    <script type = "text/javascript">
+    function createShape() {
+      color = document.getElementById("id_shapeColor").value;
+      type = document.getElementById("id_shapeType").value;
+      if (color == "" || type == "") {
+        document.getElementById("id_shapeProperty").innerHTML = "すべて入力してください";
+        document.getElementById("id_shapeHello").innerHTML = "";
+        return;
+      }
+      instance = new Shape(color, type);
+      document.getElementById("id_shapeProperty").innerHTML = instance.property();
+      document.getElementById("id_shapeHello").innerHTML = "staticメソッド： " + Shape.hello();
+    }
+
+    function createCircle() {
+      color = document.getElementById("id_circleColor").value;
+      radius = document.getElementById("id_circleRadius").value;
+      if (color == "" || radius == "") {
+        document.getElementById("id_circleProperty").innerHTML = "すべて入力してください";
+        document.getElementById("id_circleArea").innerHTML = "";
+        document.getElementById("id_circleHello").innerHTML = "";
+        return;
+      }
+      instance = new Circle(color, radius);
+      document.getElementById("id_circleProperty").innerHTML = instance.property();
+      document.getElementById("id_circleArea").innerHTML = "面積は" + instance.area() + "です";
+      document.getElementById("id_circleHello").innerHTML = "staticメソッド： " + Circle.hello();
+    }
+
+    function createRectangle() {
+      color = document.getElementById("id_recColor").value;
+      width = document.getElementById("id_recWidth").value;
+      height = document.getElementById("id_recHeight").value;
+      if (color == "" || width == "" || height == "") {
+        document.getElementById("id_recProperty").innerHTML = "すべて入力してください";
+        document.getElementById("id_recArea").innerHTML = "";
+        return;
+      }
+      instance = new Rectangle(color, width, height);
+      console.log(instance.property());
+      document.getElementById("id_recProperty").innerHTML = instance.property();
+      document.getElementById("id_recArea").innerHTML = "面積は" + instance.area() + "です";
+    }
+
+    function createSquare() {
+      color = document.getElementById("id_squareColor").value;
+      length = document.getElementById("id_squareLength").value;
+      if (color == "" || length == "") {
+        document.getElementById("id_squareProperty").innerHTML = "すべて入力してください";
+        document.getElementById("id_squareArea").innerHTML = "";
+        document.getElementById("id_squareDiagonal").innerHTML = "";
+        return;
+      }
+      instance = new Square(color, length);
+      document.getElementById("id_squareProperty").innerHTML = instance.property();
+      document.getElementById("id_squareArea").innerHTML = "面積は" + instance.area() + "です";
+      document.getElementById("id_squareDiagonal").innerHTML = "対角線の長さは" + instance.diagonal() + "です";
+    }
+    </script>
+  </body>
+</html>
